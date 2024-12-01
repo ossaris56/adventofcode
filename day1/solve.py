@@ -1,6 +1,9 @@
+from collections import Counter
+
 left_list = []
 right_list = []
 total_dist = 0
+similarity_score = 0
 
 def insert_sorted(list, item):
     i = 0
@@ -23,4 +26,11 @@ for i in range(len(left_list)):
     dist = abs(left_list[i] - right_list[i])
     total_dist += dist
 
+counted_right_list = Counter(right_list)
+
+for number in left_list:
+    similarity_score += number * counted_right_list[number]
+
+
 print(total_dist)
+print(similarity_score)
